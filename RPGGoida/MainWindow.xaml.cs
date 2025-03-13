@@ -1,8 +1,9 @@
-﻿using RPGGoida.Models;  // Импортируем пространство имен для работы с Database
+﻿using RPGGoida.Models;
 using RPGGoida.Views;
 using System;
 using System.IO;
 using System.Windows;
+
 
 namespace RPGGoida
 {
@@ -14,7 +15,6 @@ namespace RPGGoida
         {
             InitializeComponent();
 
-            // Загружаем строку подключения из .env файла
             string envFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName, ".env");
             DotEnv.Load(envFilePath);
             string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
@@ -26,11 +26,8 @@ namespace RPGGoida
                 return;
             }
 
-            // Используем метод GetInstance для инициализации объекта Database
             _database = Database.GetInstance(connectionString);
         }
-
-
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -40,13 +37,13 @@ namespace RPGGoida
                 string password = PasswordTextBox.Password;
                 int? id_user = _database.AuthenticateUser(email, password);
 
-                if (id_user.HasValue) 
+                if (id_user.HasValue)
                 {
                     try
                     {
                         int userId = id_user.Value;
-                        UserEditWindow userEditWindow = new UserEditWindow(userId);
-                        userEditWindow.ShowDialog();
+                        AddCharacterWindow characterForm = new AddCharacterWindow(userId);
+                        characterForm.ShowDialog();
                     }
                     catch (Exception ex)
                     {
@@ -74,7 +71,7 @@ namespace RPGGoida
                 else
                 {
                     _database.CreateUser(email, password);
-                    MessageBox.Show("ДОБРО ПОЖАЛОВАТЬ!");
+                    Login_Button_Click(null, null);
                 }
             }
             else

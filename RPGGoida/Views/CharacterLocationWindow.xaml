@@ -1,0 +1,62 @@
+﻿<Window x:Class="RPGGoida.Views.CharacterLocationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Character Location" Height="450" Width="800">
+
+    <StackPanel>
+        <!-- Третий блок с изображениями в кнопках -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10" Width="770">
+            <Button Click="Location1_Click" Width="210" Height="137">
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Source="/Views/location1.jpg"/>
+            </Button>
+            <Button Click="Location2_Click" Width="210" Height="137">
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Source="/Views/location2.jpg"/>
+            </Button>
+            <Button Click="Location3_Click" Width="210" Height="137">
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Source="/Views/location3.jpg"/>
+            </Button>
+        </StackPanel>
+        <!-- Первый блок с кнопкой и ComboBox -->
+        <Grid  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Переместить" HorizontalAlignment="Left" Click="Button_Click" Grid.Column="1"/>
+            <ComboBox x:Name="CharacterNameComboBox"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="30" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        </Grid>
+
+        <!-- Второй блок с Label и DataGrid -->
+        <StackPanel VerticalAlignment="Top" Margin="10,10,10,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="800">
+                <Label Content="Персонажи" VerticalAlignment="Top" Width="210"/>
+                <Label Content="Враги" VerticalAlignment="Top" Width="255"/>
+                <Label Content="NPC" Width="210"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                <DataGrid Name="CharactersInLocationDataGrid" VerticalAlignment="Top" Width="210" Height="150">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" Width="150"/>
+                        <DataGridTextColumn Header="Level" Binding="{Binding PersonLevel}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DataGrid x:Name="EnemiInLocationDataGrid" VerticalAlignment="Top" Width="256" Height="150">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding MobName}" Width="150"/>
+                        <DataGridTextColumn Header="Level" Binding="{Binding MobLevel}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DataGrid x:Name="NpcInLocationDataGrid" VerticalAlignment="Top" Width="256" Height="150">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding NpcName}" Width="150"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+
+
+    </StackPanel>
+</Window>

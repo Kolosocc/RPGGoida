@@ -25,7 +25,6 @@ public static class DotEnv
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                 continue;
 
-            // Разделяем строку на ключ и значение
             var parts = line.Split(new[] { '=' }, 2);
 
             if (parts.Length == 2)

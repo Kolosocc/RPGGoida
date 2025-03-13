@@ -200,10 +200,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Mob.cs" />
+    <Compile Include="Models\Npc.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonItem.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\Quest.cs" />
+    <Compile Include="Models\QuestNpc.cs" />
+    <Compile Include="Models\QuestPerson.cs" />
+    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\SkillViewModel.cs" />
+    <Compile Include="Models\Сlass.cs" />
     <Compile Include="Utils\DotEnv.cs" />
     <Compile Include="Utils\Hashing.cs" />
-    <Compile Include="Views\UserEditWindow.xaml.cs">
-      <DependentUpon>UserEditWindow.xaml</DependentUpon>
+    <Compile Include="Views\CharacterAddSkillWindow.xaml.cs">
+      <DependentUpon>CharacterAddSkillWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharacterAddWindow.xaml.cs">
+      <DependentUpon>CharacterAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharacterLocationWindow.xaml.cs">
+      <DependentUpon>CharacterLocationWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -217,13 +236,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\UserEditWindow.xaml">
+    <Page Include="Views\CharacterAddSkillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacterAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacterLocationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Database.cs" />
+    <Compile Include="BD\Database.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -250,6 +277,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\location1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\location2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\location3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
